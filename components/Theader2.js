@@ -8,30 +8,60 @@ import Link from "next/link";
 import Image from "next/image";
 
 function Theader2() {
-  const [geolocationData, setGeolocationData] = useState("");
-  const [value, setValue] = useState(new Date());
+  
+  const [currentTime, setCurrentTime] = useState();
+  const [countryName, setCountryName] = useState("");
+  const [countryCode, setCountryCode] = useState("");
 
   useEffect(() => {
-    const fetchGeolocationData = async () => {
-      try {
-        const response = await fetch("https://geolocation-db.com/json/");
-        const data = await response.json();
-        setGeolocationData(data);
-      } catch (error) {
-        console.log("Error fetching geolocation data:", error);
-      }
-    };
-
-    fetchGeolocationData();
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => setValue(new Date()), 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+      // Fetch the user's geolocation data
+      fetch("https://geolocation-db.com/json/")
+        .then((response) => response.json())
+        .then((data) => {
+          setCountryCode(data.country_code);
+          setCountryName(data.country_name);
+        })
+        .catch((error) => console.log(error));
+    }, []);
+  
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentTime(new Date().toLocaleTimeString());
+      }, 1000);
+  
+      return () => clearInterval(interval);
+    }, []);
+  
+    const [currentDate, setCurrentDate] = useState({
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentTime(
+          new Date().toLocaleTimeString([], {
+            hour12: false,
+            hour: "numeric",
+            minute: "numeric",
+            second: undefined,
+          })
+        );
+        setCurrentDate(
+          new Date().toLocaleDateString(undefined, {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        );
+      }, 1000);
+  
+      return () => clearInterval(interval);
+    }, []);
+  
 
   return (
     <div>
@@ -76,23 +106,23 @@ function Theader2() {
             <div className="flex justify-end mt-0">
               <div className="">
                 <p className="text-white text-inherit sm:flex hidden">
-                  <span className="mr-2 ">10:00am</span>
+                  <span className="mr-2 ">{currentTime}</span>
                   <span className="text-white text-inherit ">
-                    {geolocationData.country_name}
+                  {countryName}
                   </span>
                 </p>
                 <p className=" text-[#BE9F56] text-[11px] md:text-[9px] tracking-[2px] uppercase sm:flex hidden">
-                  Saturday, May 27, 2023
+                {`${currentDate} `}
                 </p>
               </div>
               <div className="flex justify-end text-white ">
                 <ReactCountryFlag
-                  countryCode={geolocationData.country_code}
+                  countryCode={countryCode}
                   svg
                   className="mb-0 ml-5 text-[30px] h-32 w-32"
                   cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/1x1/"
                   cdnSuffix="svg"
-                  title=""
+                  title={countryCode}
                 />
                 <BiShoppingBag className="w-[20.89px] h-[25px] sm:ml-4 text-[25px] ml-[40px] " />
                 <CgProfile className="w-[20.89px] h-[25px] ml-3 sm:ml-4 text-[25px]" />

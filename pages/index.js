@@ -10,11 +10,13 @@ import Footer from '../components/Footer'
 import Theader from '../components/Theader'
 import Thr from '../components/Thr'
 import Theader2 from '../components/Theader2'
+import Maipag from '../components/Maipag'
 // import Theader2 from '../components/Theader2'
 export default function Home() {
   return (
    <div>
      {/* <Narbar/> */}
+     {/* <Maipag/> */}
      <Theader2/>
      {/* <Header/> */}
      <Header2/>
