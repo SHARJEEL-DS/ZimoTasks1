@@ -53,13 +53,13 @@ function Theader2() {
                 width={100}
                 height={100}
               />
-              <Image
+              {/* <Image
                 className="sm:flex hidden lg:w-[184.9px] w-[25px] h-[20px] lg:h-[50px] lg:mr-[39px] mr-3"
                 src="/arro.png"
                 alt="asd"
                 width={100}
                 height={100}
-              />
+              /> */}
               <p className="text-white uppercase sm:mt-1 mt-[25px] text-xs tracking-[2px] sm:flex hidden">
                 about
               </p>
