@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+
 function Header2() {
   return (
     <div id="Header2"  className=" h-screen flex sm:text-left flex-col justify-between md:px-[30px] sm:px-[20px]  lg:px-[60px]  md:pt-[30px] sm:pt-[20px]  pt-[60px]   uppercase tracking-[2px]  ">
