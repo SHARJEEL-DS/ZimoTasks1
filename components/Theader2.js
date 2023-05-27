@@ -76,13 +76,13 @@ function Theader2() {
             <div className="flex justify-end mt-0">
               <div className="">
                 <p className="text-white text-inherit sm:flex hidden">
-                  <span className="mr-2 ">3:00pm</span>
+                  <span className="mr-2 ">10:00am</span>
                   <span className="text-white text-inherit ">
                     {geolocationData.country_name}
                   </span>
                 </p>
                 <p className=" text-[#BE9F56] text-[11px] md:text-[9px] tracking-[2px] uppercase sm:flex hidden">
-                  Friday, May 26, 2023
+                  Saturday, May 27, 2023
                 </p>
               </div>
               <div className="flex justify-end text-white ">
