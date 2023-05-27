@@ -8,11 +8,15 @@ import Header3 from '../components/Header3'
 import Header4 from '../components/Header4'
 import Footer from '../components/Footer'
 import Theader from '../components/Theader'
+import Thr from '../components/Thr'
+import Theader2 from '../components/Theader2'
+// import Theader2 from '../components/Theader2'
 export default function Home() {
   return (
    <div>
      {/* <Narbar/> */}
-     <Theader/>
+     <Theader2/>
+     {/* <Header/> */}
      <Header2/>
      <Header3/>
      <Header4/>

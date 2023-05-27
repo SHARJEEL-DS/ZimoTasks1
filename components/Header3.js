@@ -27,7 +27,7 @@ function Header3() {
                 alt="arrow-dark"
                 width={50}
                 height={50}
-                className='mr-5 cursor-pointer  mySwiper'
+                className='mr-5 cursor-pointer sm:flex h-6 w-6  mySwiper'
                 // className="w-10 py-2 transition-all cursor-pointer hover:scale-150 animate-bounce hover:animate-ping "
               />
        <Image
@@ -36,7 +36,8 @@ function Header3() {
                 alt="arrow-dark"
                 width={50}
                 height={50}
-                className='ml-5 cursor-pointer mySwiper'
+
+                className='ml-5 cursor-pointer sm:flex h-6 w-6  mySwiper'
                 // className="w-10 py-2 transition-all cursor-pointer hover:scale-150 animate-bounce hover:animate-ping "
               />
         </div>
