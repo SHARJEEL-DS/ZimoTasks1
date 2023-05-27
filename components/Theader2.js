@@ -75,9 +75,9 @@ function Theader2() {
             </div>
             <div className="flex justify-end mt-0">
               <div className="">
-                <p className="text-white text-inherit">
-                  <span className="mr-2 sm:flex hidden">3:00pm</span>
-                  <span className="text-white text-inherit sm:flex hidden">
+                <p className="text-white text-inherit sm:flex hidden">
+                  <span className="mr-2 ">3:00pm</span>
+                  <span className="text-white text-inherit ">
                     {geolocationData.country_name}
                   </span>
                 </p>
