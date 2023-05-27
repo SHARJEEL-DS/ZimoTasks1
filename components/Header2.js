@@ -1,10 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function Header2() {
   return (
-    <div>
-      <div className="p-5 bg-white ">
+    <div id="Header2"  className=" h-screen flex sm:text-left flex-col justify-between md:px-[30px] sm:px-[20px]  lg:px-[60px]  md:pt-[30px] sm:pt-[20px]  pt-[60px]   uppercase tracking-[2px]  ">
+
+       <div className="p-5 bg-white ">
         <div className="flex  ">
           <p className="py-10 mx-auto  sm:text-left text-center uppercase text-[14px] ">
             A REAL STATE AND PROPERTY PLATFORM THAT IS CHANGING THE WORLD
@@ -36,13 +38,28 @@ function Header2() {
             </p>
           </div>
         </div>
-        <p className="text-[45px] mt-2 ">the best of the best </p>{" "}
+        <p className="text-[40px]  ">the best of the best </p>{" "}
         <p>
           A COMBINATION OF AUTOMATION AND MANUAL CURATION OUR PRO
           <br /> AGENTS AND MODERATION TEAM SELECTS THE HIGHEST QUALITY
           <br /> LISTINGS ON THE MARKET FROM ACROSS THE WORLD.
         </p>
-      </div>
+      </div> 
+
+      <div className="grid grid-cols-1 child-div">
+            
+            <Link className="justify-self-center" href="#Header3" >
+              
+              <Image
+                src="/pngwing.com.png"
+                alt="arrow-dark"
+                width={100}
+                height={100}
+                className="w-10 py-2 transition-all cursor-pointer hover:scale-150 animate-bounce hover:animate-ping "
+              />
+            </Link>
+          </div>
+          
     </div>
   );
 }

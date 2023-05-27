@@ -3,7 +3,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div>
+    <div id="Footer">
       <div className='bg-[url("/h.jpg")] h-screen bg-cover flex bg-center p-12 '>
         <div className="flex items-center w-6/12 text-white ">
         <Image

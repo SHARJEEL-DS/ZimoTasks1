@@ -1,26 +1,55 @@
 import Image from 'next/image'
-import React from 'react'
-// import Image from "next/image";
-import styles from "../styles/Home.module.css";
-// import { AiOutlineGift } from 'react-icons/Ai'
-
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-//import "./styles.css";
-// import required modules
-import { Pagination,Navigation ,A11y} from "swiper";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import React, { useRef, useEffect, useState } from "react";
+import Link from 'next/link';
 
 function Header3() {
-  const swiper = useSwiper();
+  const sliderRef = useRef(null);
+  const [slidesToShow, setSlidesToShow] = useState(1);
+
+  //for applying to 4 images on large and 1 on small
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      if (window.innerWidth >= 768) {
+        setSlidesToShow(4);
+      } else {
+        setSlidesToShow(1);
+      }
+    };
+
+    window.addEventListener("resize", updateSlidesToShow);
+    updateSlidesToShow();
+
+    return () => {
+      window.removeEventListener("resize", updateSlidesToShow);
+    };
+  }, []);
+
+  const handlePrevious = () => {
+    sliderRef.current.slickPrev();
+  };
+
+  const handleNext = () => {
+    sliderRef.current.slickNext();
+  };
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: slidesToShow,
+    slidesToScroll: 1,
+  };
+
   return (
-    <div>
-      <section className="container px-4 py-10 mx-auto">
+    <div id='Header3'>
+      <section className="container px-4 py-10 mx-auto mt-44">
       {/* <Hea title="What i do" /> */}
       <div className="text-[35px]  ml-10"> <span className="text-[35px] font-bold">CATEGORIES</span>
       <div className="flex justify-end mt-0 mySwiper ">
-        
+      <button onClick={handlePrevious} >
       <Image
                 src="/rightarrow.jpeg"
                 // onClick={()=> swiper.slidePrev()}
@@ -30,6 +59,8 @@ function Header3() {
                 className='mr-5 cursor-pointer sm:flex h-6 w-6  mySwiper'
                 // className="w-10 py-2 transition-all cursor-pointer hover:scale-150 animate-bounce hover:animate-ping "
               />
+              </button>
+              <button onClick={handleNext}>
        <Image
                 src="/leftarrow.jpeg"
                 // onClick={()=> swiper.slideNext()}
@@ -40,40 +71,13 @@ function Header3() {
                 className='ml-5 cursor-pointer sm:flex h-6 w-6  mySwiper'
                 // className="w-10 py-2 transition-all cursor-pointer hover:scale-150 animate-bounce hover:animate-ping "
               />
+              </button>
         </div>
               
        </div>
 
-      <Swiper
-        // slidesPerView={1}
-        spaceBetween={10}
-        pagination={{
-          clickable: true,
-        }}
-        breakpoints={{
-          "@0.00": {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          "@0.75": {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          "@1.00": {
-            slidesPerView: 3,
-            spaceBetween: 40,
-          },
-          "@1.50": {
-            slidesPerView: 3,
-            spaceBetween: 50,
-          },
-        }}
-        modules={[Navigation,Pagination,A11y]}
-        className="mySwiper"
-        // onSlideChange={}
-      >
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          <SwiperSlide>
+        <div className="">
+        <Slider {...settings} ref={sliderRef}>
             <div>
               <Image
                 src="/b.jpg"
@@ -84,8 +88,8 @@ function Header3() {
                 className="flex flex-col gap-4 px-8 py-10 text-white showdow-lg"
               />
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
+        
+          
             <div>
               <Image
                 src="/a.jpg"
@@ -97,8 +101,7 @@ function Header3() {
               />
               
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
+         
             <div>
               <Image
                 src="/b.jpg"
@@ -110,8 +113,7 @@ function Header3() {
               />
               
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
+          
             <div>
               <Image
                 src="/a.jpg"
@@ -123,8 +125,7 @@ function Header3() {
               />
              
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
+          
             <div>
               <Image
                 src="/e.jpg"
@@ -136,9 +137,22 @@ function Header3() {
               />
               
             </div>
-          </SwiperSlide>
+            </Slider>  
         </div>
-      </Swiper>
+        
+      <div className="grid grid-cols-1 child-div">
+            
+            <Link className="justify-self-center" href="#Header4" >
+              
+              <Image
+                src="/pngwing.com.png"
+                alt="arrow-dark"
+                width={100}
+                height={100}
+                className="w-10 py-2 transition-all cursor-pointer hover:scale-150 animate-bounce hover:animate-ping "
+              />
+            </Link>
+          </div>
     </section>
     </div>
   )

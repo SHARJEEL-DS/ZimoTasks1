@@ -154,7 +154,7 @@ function Theader2() {
             <p className=" text-[#A9A6A6] text-center text-[20px] sm:text-[16px] tracking-[3px] ">
               Bringing the world closer together
             </p>
-            <Link className="justify-self-center" href="./Header2" >
+            <Link className="justify-self-center" href="#Header2" >
               
               <Image
                 src="/pngwing.com.png"
